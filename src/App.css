@@ -1,0 +1,60 @@
+
+
+.App .calculator {
+  position:relative;
+  background: rgb(61, 43, 226);
+  display:block;
+  width: 210px;
+  height: 310px;
+  border-radius: 10px;
+  
+ 
+}
+
+.App .calculator .display {
+  position:absolute;
+  background-color: rgb(128, 101, 101);
+  text-align: right;
+  margin-top: 25px;
+  margin-left: 18px;
+  width:174px;
+  height:30px;
+  font-size: 20px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.App .calculator .buttons{
+ 
+  position: absolute;
+  width: 175px;
+  margin-top: 80px;
+  margin-left: 18px;
+  
+  
+}
+
+.button{
+  margin: 1.5px;
+  
+}
+
+.App .calculator .buttons .button{
+  float:left;
+  box-shadow: 2px 3px 5px gray;
+  background: rgb(20, 149, 182);
+  border: 1px white solid;
+  border-radius:10px;
+  width: 40px;
+  height: 40px;
+  color: rgb(19, 9, 9)
+  
+}
+
+.App .calculator .buttons .equal{
+  
+  width: 40px;
+  height: 40px;
+  padding: 3px;
+  color: rgb(0, 0, 0)
+}
