@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
 
     case SIGN_CLICK:
       const expr = state.text.toString();
-      const lastInputIsSign = expr[expr.length - 1] === action.sign;
+      const lastInputIsSign = /\W+/.test(expr[expr.length - 1]);
       const lastInputIsParan = expr[expr.length - 1] === ')';
 
      if (action.sign === 'DEL'){
@@ -40,7 +40,7 @@ export default function (state = initialState, action) {
        }
      }
       
-      if(lastInputIsSign){
+      if(lastInputIsSign && action.sign !== 'C'){
         return {
           ...state,
         }
