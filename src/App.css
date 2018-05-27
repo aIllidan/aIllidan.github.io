@@ -18,10 +18,37 @@
   margin-top: 25px;
   margin-left: 18px;
   width:174px;
-  height:50px;
+  height: 50px;
   font-size: 20px;
   border-radius: 6px;
   overflow: hidden;
+  
+}
+.App .calculator .display .error {
+  position:absolute;
+  background-color: rgb(128, 101, 101);
+  text-align: right;
+  margin-top: 25px;
+  margin-left: 18px;
+  width:174px;
+  height: 20px;
+  font-size: 20px;
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 1
+}
+.App .calculator .display.text {
+  position:absolute;
+  background-color: rgb(128, 101, 101);
+  text-align: right;
+  margin-top: 50px;
+  margin-left: 18px;
+  width:174px;
+  height: 20px;
+  font-size: 20px;
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 1
 }
 
 .App .calculator .buttons{
