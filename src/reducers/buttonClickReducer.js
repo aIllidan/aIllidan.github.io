@@ -56,28 +56,20 @@ export default function (state = initialState, action) {
         }
 
         try {
-          if (lastInputIsParan) {
+          if (lastInputIsParan || expr.length > 15) {
+            return {
+              ...state,
+              text: eval(expr).toExponential(6),
+              isCalculated: true,
+              err: expr + ' ='
+            }
+          } else {
             return {
               ...state,
               text: eval(expr),
               isCalculated: true,
               err: expr + ' ='
             }
-          }
-        } catch (err) {
-          return {
-            ...state,
-            err: 'Bad expression!'
-          }
-        }
-
-        try {
-          return {
-            ...state,
-            text: eval(expr),
-            isCalculated: true,
-            blockSigns: false,
-            err: expr + ' ='
           }
         } catch (err) {
           return {
