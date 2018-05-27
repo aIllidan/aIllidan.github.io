@@ -7,7 +7,10 @@ class Display extends Component{
     render(){
         return(
             <div className='display'>
-             {this.props.text}   
+
+             {this.props.err} <br/>
+             {this.props.text} 
+              
             </div>
         )
     }
