@@ -6,10 +6,10 @@ class Display extends Component{
     
     render(){
         return(
-            <div className='display'>
+            <div className={'display ' + this.props.className}>
 
-             {this.props.err} <br/>
-             {this.props.text} 
+             {this.props.children}
+             
               
             </div>
         )
