@@ -12,7 +12,7 @@ class Calculator extends Component{
        
         return(
             <div className='calculator' >
-               <Display text={this.props.text}/>
+               <Display text={this.props.text} err={this.props.err}/>
                <Buttons/>
             </div>
         )
@@ -20,7 +20,8 @@ class Calculator extends Component{
 }
 
 const mapStateToProps = state => ({
-    text: state.buttonClick.text
+    text: state.buttonClick.text,
+    err: state.buttonClick.err
 })
 
 export default connect(mapStateToProps)(Calculator)
