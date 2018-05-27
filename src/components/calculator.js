@@ -12,7 +12,8 @@ class Calculator extends Component{
        
         return(
             <div className='calculator' >
-               <Display text={this.props.text} err={this.props.err}/>
+               <Display className="error">{this.props.err}</Display>    
+               <Display className="text" >{this.props.text}</Display>
                <Buttons/>
             </div>
         )
