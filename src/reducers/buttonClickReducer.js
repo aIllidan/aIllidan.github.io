@@ -14,14 +14,14 @@ export default function (state = initialState, action) {
 
     case DIGIT_CLICK:
       const digit = action.digit.toString();
-        if(state.text === '0') {
-          return{
-            ...state,
-            text: digit,
-            isCalculated: false,
-            blockSigns: false
-          }
+      if (state.text === '0') {
+        return {
+          ...state,
+          text: digit,
+          isCalculated: false,
+          blockSigns: false
         }
+      }
       return {
         ...state,
         text: state.text + digit,
@@ -34,20 +34,18 @@ export default function (state = initialState, action) {
       const lastInputIsSign = /\W+/.test(expr[expr.length - 1]);
       const lastInputIsParan = expr[expr.length - 1] === ')';
 
-     if (action.sign === 'DEL'){
-       return {
-         ...state,
-         text: expr.slice(0,-1)
-       }
-     }
-      
-      if(lastInputIsSign && action.sign !== 'C' && action.sign !== '='  && action.sign !== '('){
+      if (action.sign === 'DEL') {
+        return {
+          ...state,
+          text: expr.slice(0, -1)
+        }
+      }
+
+      if (lastInputIsSign && action.sign !== 'C' && action.sign !== '=' && action.sign !== '(') {
         return {
           ...state,
         }
       }
-      
-
 
       if (action.sign === '=') {
         const lastInputIsDot = expr.indexOf('.') === expr.length - 1
@@ -57,42 +55,39 @@ export default function (state = initialState, action) {
           }
         }
 
-        
-        
-
         try {
-          if (lastInputIsParan){
-          return{
-            ...state,
-            text: eval(expr),
-            isCalculated: true,
-            err: expr + ' ='
+          if (lastInputIsParan) {
+            return {
+              ...state,
+              text: eval(expr),
+              isCalculated: true,
+              err: expr + ' ='
+            }
           }
-        }
-        }catch(err){
-          return{
+        } catch (err) {
+          return {
             ...state,
             err: 'Bad expression!'
           }
         }
-        
 
-       try{ return {
-          ...state,
-          text: eval(expr),
-          isCalculated: true,
-          blockSigns: false,
-          err: expr + ' ='
-        }
-      } catch(err){
-        return {
-          ...state,
-          err: 'Bad expression!'
+        try {
+          return {
+            ...state,
+            text: eval(expr),
+            isCalculated: true,
+            blockSigns: false,
+            err: expr + ' ='
+          }
+        } catch (err) {
+          return {
+            ...state,
+            err: 'Bad expression!'
+          }
         }
       }
-    }
 
-      if (action.sign === 'C'){
+      if (action.sign === 'C') {
         return {
           ...state,
           text: '',
@@ -100,16 +95,12 @@ export default function (state = initialState, action) {
         }
       }
 
-
       return {
         ...state,
         text: state.text + action.sign,
         isCalculated: false,
         blockSigns: true
       }
-
-      
-
 
     default:
       return state;
