@@ -65,7 +65,8 @@ export default function (state = initialState, action) {
           return{
             ...state,
             text: eval(expr),
-            isCalculated: true
+            isCalculated: true,
+            err: expr + ' ='
           }
         }
         }catch(err){
