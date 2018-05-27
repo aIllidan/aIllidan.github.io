@@ -1,9 +1,10 @@
 import { DIGIT_CLICK, SIGN_CLICK } from '../actions/types';
 
 const initialState = {
-  text: '0',
+  text: '',
   isCalculated: false,
   blockSigns: true,
+  err: 'first calculation'
 
 };
 
@@ -40,21 +41,13 @@ export default function (state = initialState, action) {
        }
      }
       
-      if(lastInputIsSign && action.sign !== 'C'){
+      if(lastInputIsSign && action.sign !== 'C' && action.sign !== '='  && action.sign !== '('){
         return {
           ...state,
         }
       }
+      
 
-      if(action.sign === '(' && expr === '0'){
-        
-          return{
-            ...state,
-            text:action.sign
-          }
-        
-      }
-     
 
       if (action.sign === '=') {
         const lastInputIsDot = expr.indexOf('.') === expr.length - 1
@@ -64,32 +57,45 @@ export default function (state = initialState, action) {
           }
         }
 
-        if (lastInputIsParan){
+        
+        
+
+        try {
+          if (lastInputIsParan){
           return{
             ...state,
             text: eval(expr),
             isCalculated: true
           }
         }
-        if (state.blockSigns) {
-          return {
-            ...state
+        }catch(err){
+          return{
+            ...state,
+            err: 'Bad expression!'
           }
         }
         
 
-        return {
+       try{ return {
           ...state,
           text: eval(expr),
           isCalculated: true,
-          blockSigns: false
+          blockSigns: false,
+          err: expr + ' ='
+        }
+      } catch(err){
+        return {
+          ...state,
+          err: 'Bad expression!'
         }
       }
+    }
 
       if (action.sign === 'C'){
         return {
           ...state,
-          text: '0'
+          text: '',
+          err: ''
         }
       }
 
