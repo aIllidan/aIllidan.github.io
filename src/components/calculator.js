@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Display from './display';
 import Buttons from './buttons';
+
 import { connect } from 'react-redux';
-
-
 
 class Calculator extends Component {
   
@@ -20,6 +21,12 @@ class Calculator extends Component {
       </div>
     )
   }
+}
+
+Calculator.propTypes ={
+  text:       PropTypes.string.isRequired,
+  err:        PropTypes.string.isRequired,
+  isLongExpr: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => ({

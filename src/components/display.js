@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Display extends Component {
-
 
   render() {
     return (
@@ -14,6 +13,11 @@ class Display extends Component {
       </div>
     )
   }
+}
+
+Display.propTypes ={
+  className:  PropTypes.string.isRequired,
+  isLongExpr: PropTypes.string.isRequired
 }
 
 export default Display

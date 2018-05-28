@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { digitClick } from '../actions/calculate';
+import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+
+import { digitClick } from '../actions/calculate';
 
 
 class DigitButton extends Component {
@@ -27,7 +29,7 @@ class DigitButton extends Component {
     return (
       <div className="digitButtons">
 
-        <button className={'button'}
+        <button className={'button '}
           onClick={this.handleClick}>
           {this.getText()}
           </button>
@@ -35,6 +37,13 @@ class DigitButton extends Component {
       </div>
     )
   }
+}
+
+DigitButton.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  onClick:     PropTypes.func.isRequired,
+  getText:     PropTypes.func.isRequired,
+  digit:       PropTypes.number.isRequired
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

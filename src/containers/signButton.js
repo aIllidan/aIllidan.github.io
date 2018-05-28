@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
+
 import { signClick } from '../actions/calculate';
-
-
 
 class SignButton extends Component {
   constructor(props) {
@@ -33,6 +34,13 @@ class SignButton extends Component {
 
       </div>)
   }
+}
+
+SignButton.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  onClick:     PropTypes.func.isRequired,
+  getText:     PropTypes.func.isRequired,
+  sign:        PropTypes.number.isRequired
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
