@@ -51,6 +51,12 @@
   z-index: 1
 }
 
+.App .calculator .display.text.long,
+.App .calculator .display.error.long{
+  font-size: 14px;
+  
+}
+
 .App .calculator .buttons{
  
   position: absolute;
@@ -60,6 +66,7 @@
   
   
 }
+
 
 .button{
   margin: 1.5px;
