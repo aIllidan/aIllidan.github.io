@@ -2,7 +2,7 @@ import { DIGIT_CLICK, SIGN_CLICK } from '../actions/types';
 
 const initialState = {
   text: '',
-  isCalculated: false,
+  isLongExpr: '',
   blockSigns: true,
   err: 'first calculation'
 
@@ -18,14 +18,24 @@ export default function (state = initialState, action) {
         return {
           ...state,
           text: digit,
-          isCalculated: false,
+          isLongExpr: '',
           blockSigns: false
         }
       }
+
+      if(state.text.length > 15) {
+        return {
+          ...state,
+          isLongExpr: 'long',
+          text: state.text + digit,
+          blockSigns: false
+        }
+      }
+
       return {
         ...state,
         text: state.text + digit,
-        isCalculated: false,
+        isLongExpr: '',
         blockSigns: false
       }
 
@@ -54,21 +64,21 @@ export default function (state = initialState, action) {
             return {
               ...state,
               text: eval(expr).toExponential(6),
-              isCalculated: true,
+              isLongExpr: 'long',
               err: expr + ' ='
             }
           } else if (lastInputIsParan){
             return {
               ...state,
               text: eval(expr),
-              isCalculated: true,
+              
               err: expr + ' ='
             }
           } else {
             return {
               ...state,
               text: eval(expr),
-              isCalculated: true,
+              
               err: expr + ' ='
             }
           }
@@ -84,7 +94,7 @@ export default function (state = initialState, action) {
         return{
           ...state,
           text: expr + action.sign,
-          isCalculated: false,
+          
           blockSigns: false
         }
       }
@@ -113,7 +123,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         text: state.text + action.sign,
-        isCalculated: false,
+        
         blockSigns: true
       }
 

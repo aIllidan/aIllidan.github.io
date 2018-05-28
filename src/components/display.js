@@ -6,7 +6,7 @@ class Display extends Component {
 
   render() {
     return (
-      <div className={'display ' + this.props.className}>
+      <div className={'display ' + this.props.className + ' ' + this.props.isLongExpr}>
 
         {this.props.children}
 
