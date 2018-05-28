@@ -2,7 +2,7 @@
 
 .App .calculator {
   position:relative;
-  background: rgb(61, 43, 226);
+  background: gray;
   display:block;
   width: 210px;
   height: 310px;
@@ -13,7 +13,7 @@
 
 .App .calculator .display {
   position:absolute;
-  background-color: rgb(128, 101, 101);
+  background-color: rgb(179, 151, 151);
   text-align: right;
   margin-top: 25px;
   margin-left: 18px;
@@ -26,7 +26,7 @@
 }
 .App .calculator .display .error {
   position:absolute;
-  background-color: rgb(128, 101, 101);
+  background-color: rgb(161, 139, 139);
   text-align: right;
   margin-top: 25px;
   margin-left: 18px;
@@ -39,7 +39,7 @@
 }
 .App .calculator .display.text {
   position:absolute;
-  background-color: rgb(128, 101, 101);
+  background-color: rgb(179, 153, 153);
   text-align: right;
   margin-top: 50px;
   margin-left: 18px;
@@ -68,20 +68,23 @@
 
 .App .calculator .buttons .button{
   float:left;
-  box-shadow: 2px 3px 5px gray;
-  background: rgb(20, 149, 182);
-  border: 1px white solid;
-  border-radius:10px;
+  
+  background: gray;
+  font-size: 17px;
+  font-weight: 700;
+  border: none;
+  border-radius:50%;
   width: 40px;
   height: 40px;
-  color: rgb(19, 9, 9)
+  color: rgb(19, 9, 9);
+  transition: background 0.1s ;
+  opacity: 0.5;
   
 }
 
-.App .calculator .buttons .equal{
-  
-  width: 40px;
-  height: 40px;
-  padding: 3px;
-  color: rgb(0, 0, 0)
+.App .calculator .buttons .button:active{
+  background: rgb(230, 223, 223);
+  transform: scale(0.8,0.8);
 }
+
+
