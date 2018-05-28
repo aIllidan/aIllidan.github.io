@@ -41,12 +41,6 @@ export default function (state = initialState, action) {
         }
       }
 
-      if (lastInputIsSign && action.sign !== 'C' && action.sign !== '=' && action.sign !== '(') {
-        return {
-          ...state,
-        }
-      }
-
       if (action.sign === '=') {
         const lastInputIsDot = expr.indexOf('.') === expr.length - 1
         if (lastInputIsDot) {
@@ -56,10 +50,17 @@ export default function (state = initialState, action) {
         }
 
         try {
-          if (lastInputIsParan || expr.length > 15) {
+          if (expr.length > 15) {
             return {
               ...state,
               text: eval(expr).toExponential(6),
+              isCalculated: true,
+              err: expr + ' ='
+            }
+          } else if (lastInputIsParan){
+            return {
+              ...state,
+              text: eval(expr),
               isCalculated: true,
               err: expr + ' ='
             }
@@ -78,6 +79,28 @@ export default function (state = initialState, action) {
           }
         }
       }
+
+      if (lastInputIsParan) {
+        return{
+          ...state,
+          text: expr + action.sign,
+          isCalculated: false,
+          blockSigns: false
+        }
+      }
+
+      if (lastInputIsSign
+         && action.sign !== 'C' 
+         && action.sign !== '=' 
+         && action.sign !== '('
+         ) {
+        return {
+          ...state,
+        }
+      }
+      
+
+     
 
       if (action.sign === 'C') {
         return {
