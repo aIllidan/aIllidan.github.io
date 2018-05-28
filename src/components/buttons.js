@@ -12,7 +12,7 @@ class Buttons extends Component {
         <SignButton sign='C' />
         <SignButton sign='/' /><br />
         
-        <DigitButton digit={7} className="7" />
+        <DigitButton digit={7} />
         <DigitButton digit={8} />
         <DigitButton digit={9} />
         <SignButton sign='*'/><br />
@@ -26,8 +26,8 @@ class Buttons extends Component {
         <SignButton sign='+' /><br />
         <SignButton sign='.' />
         <DigitButton digit={0} />
-        <SignButton sign='=' className='equal'/>
-        <SignButton sign='DEL' className='DELETE'/>
+        <SignButton sign='='/>
+        <SignButton sign='DEL'/>
       </div>)
   }
 }

@@ -1,43 +1,46 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {signClick} from '../actions/calculate';
+import { connect } from 'react-redux';
+import { signClick } from '../actions/calculate';
 
 
 
-class SignButton extends Component{
-    constructor(props){
-        super(props);
-        this.handleClick = this.handleClick.bind(this)
-    }
-    
-    onClick(){
-       
-       return this.props.handleClick(this.props.sign)
-    }
+class SignButton extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this)
+  }
 
-    getText(){
-        return this.props.sign
-    }
+  onClick() {
+    return this.props.handleClick(this.props.sign)
+  }
 
-    handleClick(){
-        return this.onClick()
-    }
+  getText() {
+    return this.props.sign
+  }
 
-    render(){
-        return(
-        <div className="signButtons">
+  handleClick() {
+    return this.onClick()
+  }
 
-            <button className={'button ' + this.props.className} onClick={this.handleClick}>{this.getText()}</button>
+  render() {
+    return (
+      <div className="signButtons">
 
-        </div>)
-    }
+        <button className='button'
+          onClick={this.handleClick}>
+          {this.getText()}
+        </button>
+
+      </div>)
+  }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) =>{
-   return { handleClick: (sign)=>{
-       dispatch(signClick(sign))
-   }
-   }
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    handleClick: (sign) => {
+      dispatch(signClick(sign))
+    }
+  }
 }
 
-export default connect(null,mapDispatchToProps)(SignButton)
+export default connect(null, mapDispatchToProps)(SignButton)
