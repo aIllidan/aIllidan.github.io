@@ -6,14 +6,16 @@ import { connect } from 'react-redux';
 
 
 class Calculator extends Component {
-
-
+  
   render() {
-
     return (
       <div className='calculator' >
-        <Display className="error">{this.props.err}</Display>
-        <Display className="text" >{this.props.text}</Display>
+        <Display className="error"  isLongExpr ={this.props.isLongExpr}>
+        {this.props.err}
+        </Display>
+        <Display className="text "  isLongExpr ={this.props.isLongExpr} >
+        {this.props.text}
+        </Display>
         <Buttons />
       </div>
     )
@@ -22,7 +24,9 @@ class Calculator extends Component {
 
 const mapStateToProps = state => ({
   text: state.buttonClick.text,
-  err: state.buttonClick.err
+  err: state.buttonClick.err,
+  isLongExpr: state.buttonClick.isLongExpr
+  
 })
 
 export default connect(mapStateToProps)(Calculator)
