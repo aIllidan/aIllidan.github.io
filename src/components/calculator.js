@@ -23,7 +23,7 @@ class Calculator extends Component {
   }
 }
 
-Calculator.propTypes ={
+Calculator.propTypes = {
   text:       PropTypes.string.isRequired,
   err:        PropTypes.string.isRequired,
   isLongExpr: PropTypes.string.isRequired

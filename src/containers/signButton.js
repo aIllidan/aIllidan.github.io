@@ -6,30 +6,18 @@ import { connect } from 'react-redux';
 import { signClick } from '../actions/calculate';
 
 class SignButton extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  onClick() {
-    return this.props.handleClick(this.props.sign)
-  }
-
-  getText() {
-    return this.props.sign
-  }
-
-  handleClick() {
-    return this.onClick()
+  
+  handleClick = () => {
+    this.props.handleClick()
   }
 
   render() {
+    let sign = this.props.sign
     return (
       <div className="signButtons">
-
         <button className='button'
           onClick={this.handleClick}>
-          {this.getText()}
+          {sign}
         </button>
 
       </div>)
@@ -38,14 +26,13 @@ class SignButton extends Component {
 
 SignButton.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  onClick:     PropTypes.func.isRequired,
-  getText:     PropTypes.func.isRequired,
-  sign:        PropTypes.number.isRequired
+  sign: PropTypes.string
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  let sign = ownProps.sign
   return {
-    handleClick: (sign) => {
+    handleClick: () => {
       dispatch(signClick(sign))
     }
   }

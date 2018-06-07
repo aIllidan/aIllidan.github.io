@@ -7,31 +7,19 @@ import { digitClick } from '../actions/calculate';
 
 
 class DigitButton extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  onClick() {
-    
-    return this.props.handleClick(this.props.digit)
-  }
-
-  getText() {
-    return this.props.digit
-  }
-
-  handleClick() {
-    return this.onClick()
+  
+  handleClick = () => { 
+     this.props.handleClick()
   }
 
   render() {
+    let digit = this.props.digit
     return (
       <div className="digitButtons">
 
         <button className={'button '}
           onClick={this.handleClick}>
-          {this.getText()}
+          {digit}
           </button>
 
       </div>
@@ -41,15 +29,13 @@ class DigitButton extends Component {
 
 DigitButton.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  onClick:     PropTypes.func.isRequired,
-  getText:     PropTypes.func.isRequired,
   digit:       PropTypes.number.isRequired
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  console.log(ownProps)
+  let digit = ownProps.digit
   return {
-    handleClick: (digit) => {
+      handleClick: () => {
       dispatch(digitClick(digit))
     }
   }

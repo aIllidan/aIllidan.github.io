@@ -11,7 +11,6 @@ class Buttons extends Component {
         <SignButton sign=')' />
         <SignButton sign='C' />
         <SignButton sign='/' /><br />
-        
         <DigitButton digit={7} />
         <DigitButton digit={8} />
         <DigitButton digit={9} />
