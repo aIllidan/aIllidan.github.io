@@ -1,4 +1,5 @@
 import { DIGIT_CLICK, SIGN_CLICK } from '../actions/types';
+import math from 'mathjs';
 
 const initialState = {
   text: '',
@@ -63,21 +64,21 @@ export default function (state = initialState, action) {
           if (expr.length > 15) {
             return {
               ...state,
-              text: eval(expr).toExponential(6),
+              text: math.eval(expr).toExponential(6).toString(),
               isLongExpr: 'long',
               err: expr + ' ='
             }
           } else if (lastInputIsParan){
             return {
               ...state,
-              text: eval(expr),
+              text: math.eval(expr).toString(),
               
               err: expr + ' ='
             }
           } else {
             return {
               ...state,
-              text: eval(expr),
+              text: math.eval(expr).toString(),
               
               err: expr + ' ='
             }
